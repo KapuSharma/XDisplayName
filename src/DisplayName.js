@@ -32,7 +32,7 @@ const DisplayName = () => {
         <label>
           Last Name:
           <input
-            type="text"
+            type="text" 
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
             required
