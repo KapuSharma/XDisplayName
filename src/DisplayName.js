@@ -3,16 +3,13 @@ import React, { useState } from "react";
 const DisplayName = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [error, setError] = useState("");
+  const [fullName, setFullName] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault(); // Prevent default form submission
-    if (!firstName || !lastName) {
-      setError("Both fields are required.");
-      return;
+    if (firstName && lastName) {
+      setFullName(`${firstName} ${lastName}`);
     }
-    setError(""); // Clear error on successful submission
-    alert(`Full Name: ${firstName} ${lastName}`);
   };
 
   return (
@@ -32,7 +29,7 @@ const DisplayName = () => {
         <label>
           Last Name:
           <input
-            type="text" 
+            type="text"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
             required
@@ -41,7 +38,7 @@ const DisplayName = () => {
         <br />
         <button type="submit">Submit</button>
       </form>
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      {fullName && <h3>Full Name: {fullName}</h3>}
     </div>
   );
 };
